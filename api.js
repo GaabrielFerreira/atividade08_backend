@@ -1,12 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 
-// Função para formatar data/hora no fuso horário brasileiro
+app.use(cors()); // Habilita CORS
+
 function getBrazilianDateTime() {
   const now = new Date();
 
-  // Formata a data (DD/MM/AAAA)
   const date = new Intl.DateTimeFormat('pt-BR', {
     timeZone: 'America/Sao_Paulo',
     day: '2-digit',
@@ -14,7 +15,6 @@ function getBrazilianDateTime() {
     year: 'numeric'
   }).format(now);
 
-  // Formata a hora (HH:MM:SS)
   const time = new Intl.DateTimeFormat('pt-BR', {
     timeZone: 'America/Sao_Paulo',
     hour: '2-digit',
